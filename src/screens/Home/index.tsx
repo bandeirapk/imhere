@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import { 
   Text,
   View,
@@ -12,35 +14,35 @@ import { Participant } from '../../components/Participant';
 import { styles } from './styles';
 
 export default function Home() {
-  const participants: string[] = ['Wladson', 'Jonas', 'Bandeira', 'João', 'Maria', 'José', 'Henrique', 'Raimundo', 'Raquel'];
+  const [participants, setParticipants] = useState<string[]>([]);
+  const [participantName, setParticipantName] = useState(''); // Inferência de tipo
 
   function handleParticipantAdd() {
-    if(participants.includes('Bandeira')) {
-      Alert.alert("Participante existente", "Já existe um participante com esse nome na lista!");
-      return;
+    if(participants.includes(participantName)) {
+      return Alert.alert("Participante existente", "Já existe um participante com esse nome na lista!");
     }
 
-    console.log("Você clicou no botão de adicionar!");
+    setParticipants(prevState => [...prevState, participantName]);
+    setParticipantName('');
   }
 
   function handleParticipantRemove(name: string) {
     Alert.alert("Remover", `Remover o participante ${name} da lista?`, [
       {
         text: 'Sim',
-        onPress: () => Alert.alert("Deletado!")
+        onPress: () => setParticipants( (prevState) => prevState.filter(participant => participant !== name) )
       },
       {
         text: 'Não',
         style: 'cancel',
       }
     ]);
-    console.log("Você clicou no botão de remover!", name);
   }
 
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>
-        Nome do evento:
+        Nome do evento
       </Text>
 
       <Text style={styles.eventDate}>
@@ -52,6 +54,8 @@ export default function Home() {
           style={styles.input}
           placeholder="Nome do participante"
           placeholderTextColor='#9E9E9E'
+          onChangeText={textEvent => setParticipantName(textEvent)} // Dispara um evento sempre que o usuário digitar algo no input
+          value={participantName}
         />
 
         <TouchableOpacity 
