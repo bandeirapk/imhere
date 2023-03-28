@@ -16,6 +16,7 @@ O App consiste em trazer ao usuário a lista de pessoas cadastradas em um evento
 - `React Native`
 - `Typescript`
 - `NodeJS`
+- `NPM`
 
 ## 🛠️ Abrir e rodar o projeto
 Você pode baixar o projeto e rodar em seu computador seguindo os passos abaixo:
@@ -29,7 +30,8 @@ git clone https://github.com/bandeirapk/imhere.git
 
 Abra o projeto e instale as dependências e rode o projeto:
 ```bash
-npx install
+cd imhere/
+npm install
 npx expo start
 ```
 
