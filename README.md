@@ -6,7 +6,9 @@ App de criação de lista de presença para eventos usando [React Native](https:
 
 O App consiste em trazer ao usuário a lista de pessoas cadastradas em um evento em real time e permitindo a adição de novos participantes e a remoção de participantes já cadastrados.
 
-![](imgs/amost.gif)
+<div align="left">
+  <img src="./imgs/amost.gif" alt="gif da aplicação em execução" width="369px" height="659px">
+</div>
 
 ## ✔️ Tecnologias utilizadas
 
